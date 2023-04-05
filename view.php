@@ -24,12 +24,12 @@
         <?php 
             $sqlconnect = mysqli_connect('localhost', 'root', '');
             if (!$sqlconnect){
-                die("Failed to connect to the database: ". mysqli_error());
+                die("Failed to connect to the database: ");
             }
             
             $selectDB = mysqli_select_db($sqlconnect, 'APSMS');
             if (!$selectDB){
-                die("Failed to connect to the database: ". mysqli_error());
+                die("Failed to connect to the database: ");
             }
             ?>
             <body style = "margin: 50px;">
@@ -42,7 +42,7 @@
                 $subID = $_GET['id'];
                 $result_out = mysqli_query($sqlconnect, "Select * from actdetail WHERE SubmissionID = '$subID'");
                 if (!$result_out){
-                    die("Failed to connect: ". mysqli_error());
+                    die("Failed to connect: ");
                 }else {
                     $dataVal = mysqli_fetch_array($result_out);
                     $timeS = $dataVal['Timestamp'];
