@@ -79,9 +79,10 @@
                     echo "Email: " . $email . " " . "<br>";
                     echo "File: " . $file . " " . "<br>";
                 }
-        ?>
-        </tbody>
-        </table>
+            ?>
+            </tbody>
+            </table>
+        <a class = 'btn btn-primary' href = 'dts.php'> Return DTS </a> 
     </body>
 </html>
         
