@@ -1,3 +1,16 @@
+<?php 
+    $sqlconnect = mysqli_connect('localhost', 'root', '');
+    if (!$sqlconnect){
+        die("Failed to connect to the database: ");
+    }
+            
+    $selectDB = mysqli_select_db($sqlconnect, 'APSMS');
+    if (!$selectDB){
+         die("Failed to connect to the database: ");
+    }
+
+    session_start();
+?>
 <html>
     <head>
         <meta charset = "UTF-8">
@@ -14,21 +27,9 @@
             </style>
     </head>
     <body>
-        <?php 
-            $sqlconnect = mysqli_connect('localhost', 'root', '');
-            if (!$sqlconnect){
-                die("Failed to connect to the database: ");
-            }
-            
-            $selectDB = mysqli_select_db($sqlconnect, 'APSMS');
-            if (!$selectDB){
-                die("Failed to connect to the database: ");
-            }
-            ?>
-            
-            
-        <html>
             <body style = "margin: 50px;">
+            <?php echo "<h2> Hello, ". $_SESSION["accountName"] . "</h2>"?>
+
             <div class = "container"> 
             <div class = "scroll"> 
                 <table class = "table">

@@ -1,3 +1,16 @@
+<?php 
+    $sqlconnect = mysqli_connect('localhost', 'root', '');
+    if (!$sqlconnect){
+        die("Failed to connect to the database: ");
+    }
+            
+    $selectDB = mysqli_select_db($sqlconnect, 'APSMS');
+    if (!$selectDB){
+         die("Failed to connect to the database: ");
+    }
+
+    session_start();
+?>
 <html>
 <head>
         <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
@@ -39,23 +52,6 @@
         $flag = true;
         $timestamp = date('Y-m-d H:i:s');
 
-        $sqlconnect = mysqli_connect('localhost', 'root', '');
-        if (!$sqlconnect){
-        die("Failed to connect to the database: ");
-        }
-$sqlconnect = mysqli_connect('localhost', 'root', '');
-if (!$sqlconnect){
-    die("Failed to connect to the database: ");
-}
-
-        $selectDB = mysqli_select_db($sqlconnect, 'APSMS');
-        if (!$selectDB){
-        die("Failed to connect to the database: ");
-        }
-$selectDB = mysqli_select_db($sqlconnect, 'APSMS');
-if (!$selectDB){
-    die("Failed to connect to the database: ");
-}
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["term"])) {

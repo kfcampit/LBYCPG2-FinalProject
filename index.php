@@ -1,9 +1,15 @@
-<?php
-    $sqlConnect = mysqli_connect('localhost', 'root', '');
-    if (!$sqlConnect) die();
+<?php 
+    $sqlconnect = mysqli_connect('localhost', 'root', '');
+    if (!$sqlconnect){
+        die("Failed to connect to the database: ");
+    }
+            
+    $selectDB = mysqli_select_db($sqlconnect, 'APSMS');
+    if (!$selectDB){
+         die("Failed to connect to the database: ");
+    }
 
-    $selectDB = mysqli_select_db($sqlConnect, 'APSMS');
-    if (!$selectDB) die();
+    session_start();
 ?>
 
 <html>
@@ -38,8 +44,15 @@
                 
                 $data = mysqli_fetch_array($searchForUser);
 
-                if ($data['password'] == cleanInput($pass))
+                if ($data['password'] == cleanInput($pass)) {
+                    $_SESSION['password'] = $data['password'];
+                    $_SESSION['username'] = $data['username'];
+                    $_SESSION['accountID'] = $data['accountID'];
+                    $_SESSION['accountName'] = $data['accountName'];
+                    $_SESSION['classification'] = $data['classification'];
+
                     return true;
+                }
                 return false;
             }
 
@@ -47,7 +60,7 @@
                 $user = $_POST['user'];
                 $pass = $_POST['pass'];
 
-                if (checkIfValid($sqlConnect, $user, $pass) && !empty($user) && !empty($pass)) header('Location: welcome.php');
+                if (checkIfValid($sqlconnect, $user, $pass) && !empty($user) && !empty($pass)) header('Location: dts.php');
                 else echo "<span class = 'error'>Incorrect username or password.</span>";
                 die();
             }
