@@ -29,7 +29,6 @@
     <body>
             <body style = "margin: 50px;">
             <?php echo "<h2> Hello, ". $_SESSION["accountName"] . "</h2>"?>
-
             <div class = "container"> 
             <div class = "scroll"> 
                 <table class = "table">
@@ -44,12 +43,13 @@
                             <th> Starting Date</th>
                             <th> Nature of Activity</th>
                             <th> Type of Acitivity</th>
+                            <th> Check Status</th>
                         </tr>
                     </thread>
                  <tbody>
             <?php
 
-                $result_out = mysqli_query($sqlconnect, "Select Timestamp, Term, Organization, ActivityTitle, TypeOfSubmission, ActivityDuration, StartingDate, NatureOfActivity, TypeOfActivity
+                $result_out = mysqli_query($sqlconnect, "Select Timestamp, Term, Organization, ActivityTitle, TypeOfSubmission, ActivityDuration, StartingDate, NatureOfActivity, TypeOfActivity, SubmissionID
                   from actdetail ORDER BY Timestamp");
                 if (!$result_out){
                     die("Failed to connect: ");
@@ -64,6 +64,7 @@
                     $startDate = $dataVal['StartingDate'];
                     $natureAct = $dataVal['NatureOfActivity'];
                     $typeAct = $dataVal['TypeOfActivity'];
+                    $subID = $dataVal['SubmissionID'];
                     echo "<tr>
                     <td>" . $timeS . "</td>
                     <td>" . $term . "</td>
@@ -74,6 +75,9 @@
                     <td>" . $startDate . "</td>
                     <td>" . $natureAct . "</td>
                     <td>" . $typeAct . "</td>
+                    <td>
+                        <a class = 'btn btn-primary' href = 'view.php?id=$subID'> View </a> 
+                    </td>
                     </tr>";
             }        
         ?>
