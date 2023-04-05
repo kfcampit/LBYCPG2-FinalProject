@@ -12,13 +12,6 @@
                 overflow: scroll;
             }
             </style>
-            <style>
-             label {
-                display: inline-block;
-                width: 110px;
-                color: #000000;
-            }
-        </style>
     </head>
     <body>
         <?php 
