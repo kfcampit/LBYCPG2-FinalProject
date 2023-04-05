@@ -17,12 +17,12 @@
         <?php 
             $sqlconnect = mysqli_connect('localhost', 'root', '');
             if (!$sqlconnect){
-                die("Failed to connect to the database: ". mysqli_error());
+                die("Failed to connect to the database: ");
             }
             
             $selectDB = mysqli_select_db($sqlconnect, 'APSMS');
             if (!$selectDB){
-                die("Failed to connect to the database: ". mysqli_error());
+                die("Failed to connect to the database: ");
             }
             ?>
             
@@ -51,7 +51,7 @@
                 $result_out = mysqli_query($sqlconnect, "Select Timestamp, Term, Organization, ActivityTitle, TypeOfSubmission, ActivityDuration, StartingDate, NatureOfActivity, TypeOfActivity
                   from actdetail ORDER BY Timestamp");
                 if (!$result_out){
-                    die("Failed to connect: ". mysqli_error());
+                    die("Failed to connect: ");
                 }
                 while($dataVal = mysqli_fetch_array($result_out)){
                     $timeS = $dataVal['Timestamp'];
