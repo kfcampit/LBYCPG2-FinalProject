@@ -15,12 +15,12 @@ $timestamp = date('Y-m-d H:i:s');
 
 $sqlconnect = mysqli_connect('localhost', 'root', '');
 if (!$sqlconnect){
-    die("Failed to connect to the database: ". mysqli_error());
+    die("Failed to connect to the database: ");
 }
 
 $selectDB = mysqli_select_db($sqlconnect, 'APSMS');
 if (!$selectDB){
-    die("Failed to connect to the database: ". mysqli_error());
+    die("Failed to connect to the database: ");
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
