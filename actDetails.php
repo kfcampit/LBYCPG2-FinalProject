@@ -40,6 +40,13 @@
                 padding: 5px 10px;
             }
         </style>
+        <script type="text/javascript">
+            function ShowHideDiv() {
+                var dropdownType = document.getElementById("dropdownType");
+                var otherInfo = document.getElementById("otherInfo");
+                otherInfo.style.display = dropdownType.value == "Others" ? "block" : "none";
+            }
+            </script>
     </head>
 <body style = "margin: 50px;">
     <div class = "container"> 
@@ -260,8 +267,9 @@
         <span class="error">* <?php echo $actNatureErr;?></span>
 
         <br><br>
-        <label for = "dropdown">Type of Activity: </label>
-        <select name="actType" id="dropdown">
+        <label for = "dropdownType">Type of Activity: </label>
+        <select name="actType" id="dropdownType" onchange = "ShowHideDiv()">
+            <option value=""> --- SELECT OPTION ---</option>
             <option value="Assistance">Assistance</option>
             <option value="Awareness Campaign">Awareness Campaig</option>
             <option value="Contest">Contest</option>
@@ -275,6 +283,10 @@
             <option value="Spiritual Activity">Spiritual Activity</option>
             <option value="Others">Others</option>
         </select>
+        <div class="control-group" id="otherInfo" style="display: none">
+              <label for = "otherInfo" class="control-label">Enter Other Type: </label>
+                <input type="text" placeholder="Enter Other Type" name="actType" class="input-xlarge">
+            </div>
         <span class="error">* <?php echo $actTypeErr;?></span>
 
         <br><br>
