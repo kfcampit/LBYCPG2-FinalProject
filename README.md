@@ -40,7 +40,7 @@ In Progress:
 - Layout
 - Design
 
-### **5. Account Management***
+### **5. Account Management**
 Done:
 - None
 
