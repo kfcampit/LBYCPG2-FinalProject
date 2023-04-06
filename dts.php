@@ -179,7 +179,7 @@
             <div class = "scroll"> 
                 <table class = "table">
                     <thread>
-                        <tr>
+                         <tr>
                             <th> Timestamp </th>
                             <th> Term</th>
                             <th> Organization</th>
@@ -189,6 +189,7 @@
                             <th> Starting Date</th>
                             <th> Nature of Activity</th>
                             <th> Type of Acitivity</th>
+                            <th> Submission Status</th>
                             <th> Check Status</th>
                         </tr>
                     </thread>
@@ -196,8 +197,8 @@
             <?php
 
                 function allContents($connection) {
-                    $result_out = mysqli_query($connection, "Select Timestamp, Term, Organization, ActivityTitle, TypeOfSubmission, ActivityDuration, StartingDate, NatureOfActivity, TypeOfActivity, SubmissionID
-                                                            from actdetail ORDER BY Timestamp");
+                    $result_out = mysqli_query($connection, "SELECT Timestamp, Term, Organization, ActivityTitle, TypeOfSubmission, ActivityDuration, StartingDate, NatureOfActivity, TypeOfActivity, 
+                    SubmissionID, ProcessingStage FROM actdetail LEFT JOIN actstatus ON actdetail.SubmissionID = actstatus.SubID ORDER BY Timestamp");
                     if (!$result_out) die("Failed to connect: ");
                     else return $result_out;
                 }
@@ -207,14 +208,14 @@
                         $timeS = $dataVal['Timestamp'];
                         $term = $dataVal['Term'];
                         $org = $dataVal['Organization'];
-                        $actTitle = $dataVal['ActivityTitle'];
+                        $actTitle= $dataVal['ActivityTitle'];
                         $typeSub = $dataVal['TypeOfSubmission'];
                         $actDur = $dataVal['ActivityDuration'];
                         $startDate = $dataVal['StartingDate'];
                         $natureAct = $dataVal['NatureOfActivity'];
                         $typeAct = $dataVal['TypeOfActivity'];
                         $subID = $dataVal['SubmissionID'];
-
+                        $process = $dataVal['ProcessingStage'];
                         echo "<tr>
                         <td>" . $timeS . "</td>
                         <td>" . $term . "</td>
@@ -225,11 +226,12 @@
                         <td>" . $startDate . "</td>
                         <td>" . $natureAct . "</td>
                         <td>" . $typeAct . "</td>
+                        <td>" . $process . "</td>
                         <td>
                             <a class = 'btn btn-primary' href = 'view.php?id=$subID'> View </a> 
                         </td>
                         </tr>";
-                    }        
+                    }          
                 }
                 
                 function cleanInput($data) {
