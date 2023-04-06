@@ -35,7 +35,9 @@
                 <?php
 
                 $subID = $_GET['id'];
-                $result_out = mysqli_query($sqlconnect, "Select * from actdetail WHERE SubmissionID = '$subID'");
+                $result_out = mysqli_query($sqlconnect, "SELECT Timestamp, Term, Organization, ARN, ActivityTitle, TypeOfSubmission, ActivityDuration, ForEvaluation, StartingDate, EndingDate, Time, Venue, 
+                NatureOfActivity, TypeOfActivity, SubmissionBy, Position, ContactNumber, Email, File, ProcessingStage, ApprovalStatus from actdetail JOIN actstatus on actdetail.submissionid = actstatus.subid 
+                WHERE SubmissionID = '$subID'");
                 if (!$result_out){
                     die("Failed to connect: ");
                 }else {
@@ -59,7 +61,8 @@
                     $num = $dataVal['ContactNumber'];
                     $email = $dataVal['Email'];
                     $file = $dataVal['File'];
-                    $subID = $dataVal['SubmissionID'];
+                    $processStage = $dataVal['ProcessingStage'];
+                    $approveStatus = $dataVal['ApprovalStatus'];
                     echo "<div style='text-align:justify'>";
                     echo "Timestamp: " . $timeS . " " . "<br>";
                     echo "Term     : " . $term . " " . "<br>";
@@ -79,8 +82,12 @@
                     echo "Position: " . $pos . " " . "<br>";
                     echo "Contact Number: " . $num . " " . "<br>";
                     echo "Email: " . $email . " " . "<br>";
-                    echo "File: " . $file . " " . "<br>";
+                    echo "File: " . "<a href = $file target = '_blank'> $file </a> " . "<br>";
+                    echo "Processing Stage: " . $processStage . " " . "<br>";
+                    echo "Approval Status: " . $approveStatus . " " . "<br>";
                 }
+                echo "<a class = 'btn btn-primary' href = 'dts.php'> Return DTS </a> 
+                <a class = 'btn btn-success' href = 'actStatus.php?id=$subID'> Check </a> ";
             ?>
             </tbody>
             </table>
