@@ -53,7 +53,7 @@
     <div class = "scroll"> 
     <table class = "table">
         <?php
-        $term = $org = $arn = $actTitle = $submissionType = $actDuration = $eval_Status = $start_Date = $end_Date = $time = $venue = $actNature = $actType = $submission = $org_Pos = $contact_Num = $email = $file = "";
+        $term = $org = $arn = $actTitle = $submissionType = $actDuration = $eval_Status = $start_Date = $end_Date = $time = $venue = $actNature = $actType= $OtheractType = $submission = $org_Pos = $contact_Num = $email = $file = "";
         $termErr = $orgErr = $arnErr = $actTitleErr = $submissionTypeErr = $actDurationErr = $eval_StatusErr = $start_DateErr = $end_DateErr = $timeErr = $venueErr = "";
         $actNatureErr = $actTypeErr = $submissionErr = $org_PosErr = $contact_NumErr = $emailErr = $fileErr = "";
         $flag = true;
@@ -133,11 +133,16 @@
         } else {
             $actNature = test_input($_POST["actNature"]);
         }
-        if (empty($_POST["actType"])) {
+        if(empty($_POST["actType"]) || ($_POST["actType"] =='Others' && empty($_POST["OtheractType"]))){
             $actTypeErr = "Type of Activity is required";
             $flag = false;
         } else {
-            $actType = test_input($_POST["actType"]);
+            if (empty($_POST["actType"])){
+                $_POST["actType"] = $_POST["OtheractType"];
+                $actType = test_input($_POST["actType"]);
+            }else {
+                $actType = test_input($_POST["actType"]);
+            }
         }
         if (empty($_POST["submission"])) {
             $submissionErr = "Submitted By is required";
@@ -283,11 +288,11 @@
             <option value="Spiritual Activity">Spiritual Activity</option>
             <option value="Others">Others</option>
         </select>
-        <div class="control-group" id="otherInfo" style="display: none">
-              <label for = "otherInfo" class="control-label">Enter Other Type: </label>
-                <input type="text" placeholder="Enter Other Type" name="actType" class="input-xlarge">
-            </div>
         <span class="error">* <?php echo $actTypeErr;?></span>
+        <div class="control-group" id="otherInfo" style="display: none">
+            <label for = "otherInfo" class="control-label">Enter Other Type: </label>
+            <input type="text" placeholder="Enter Other Type" name="OtheractType" class="input-xlarge">
+        </div>
 
         <br><br>
         <label for = "submission"> Submission By: </label><input type="text" name="submission">
