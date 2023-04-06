@@ -15,10 +15,10 @@ Done:
 - Advanced Search
 - Layout
 - Reading from Database
+- Submission Statuses
 
 In Progress
 - Permission-based Viewing
-- Submission Statuses
 - Design
 
 ### **3. Document Viewing and Editing**
