@@ -1,5 +1,16 @@
 <?php
-    if ($_SESSION['classification'] == "VC") {
+    if (empty($_SESSION['classification'])) {
+        if ($_SERVER['REQUEST_URI'] != '/index.php') {
+            header('Location: /index.php');
+        }
+        echo '
+        <nav class="navbar sticky-top navbar-dark bg-primary navbar-expand-lg" style="margin-bottom: 32px">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.php">CSO - APSMS</a>
+        </div>
+        </nav>
+        ';
+    } else if ($_SESSION['classification'] == "VC") {
         echo '
         <nav class="navbar sticky-top navbar-dark bg-primary navbar-expand-lg" style="margin-bottom: 32px">
         <div class="container-fluid">
@@ -18,5 +29,5 @@
         </div>
         </nav>
         ';
-    }
+    } else header('Location: index.php');
 ?>

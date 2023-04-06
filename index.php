@@ -24,15 +24,45 @@
         <style>.error {color: #FF0000}</style>
     </head>
     <body>
-        <form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method = "post">
-            <h1>Login Page</h1>
-            <span class = "error">*Required Field</span>
-            <table>
-                <tr><td><span class = "error">*</span>Username: </td><td><input type = "text" name = "user" /></td></tr>
-                <tr><td><span class = "error">*</span>Password: </td><td><input type = "password" name = "pass" /></td></tr>
-            </table>
-            <input type = "submit" name = "b1" value = "Login"/>
-        </form>
+        <?php include("_navbar.php") ?>
+        <div>
+            <h1 style="text-align: center; padding-bottom: 16px">CSO - APS Management System</h1>
+
+            <div class="container-sm">
+                <form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method = "post">
+                    <!-- <span class = "error">*Required Field</span>
+                    <table>
+                        <tr><td><span class = "error">*</span>Username: </td><td><input type = "text" name = "user" /></td></tr>
+                        <tr><td><span class = "error">*</span>Password: </td><td><input type = "password" name = "pass" /></td></tr>
+                    </table> -->
+                    <div class="row justify-content-md-center" style = "padding-bottom: 8px">
+                        <div class="col-1">
+                            <input type="text" readonly class="form-control-plaintext" value="Username:">
+                        </div>
+                        <div class="col-3">
+                            <label for="user" class="visually-hidden">user</label>
+                            <input type="text" class="form-control" name="user">
+                        </div>
+                    </div>
+                    <div class="row justify-content-md-center" style = "padding-bottom: 16px">
+                        <div class="col-1">
+                            <input type="text" readonly class="form-control-plaintext" value="Password:">
+                        </div>
+                        <div class="col-3">
+                            <label for="pass" class="visually-hidden">pass</label>
+                            <input type="password" class="form-control" name="pass">
+                        </div>
+                    </div>
+                    <div class="row justify-content-md-center">
+                    <div class="d-grid gap-2 col-2">
+                        <button type="submit" class="btn btn-primary mb-3" name="b1">Login</button>
+                    </div>
+                    </div>
+            </form>
+            </div>
+            
+        </div>
+        
         <?php
 
             function cleanInput($data) {
@@ -48,14 +78,15 @@
                 if (!$searchForUser) return false;
                 
                 $data = mysqli_fetch_array($searchForUser);
-
-                if ($data['password'] == cleanInput($pass)) {
-                    $_SESSION['username'] = $data['username'];
-                    $_SESSION['accountID'] = $data['accountID'];
-                    $_SESSION['accountName'] = $data['accountName'];
-                    $_SESSION['classification'] = $data['classification'];
-
-                    return true;
+                if (!empty($data)) {
+                    if ($data['password'] == cleanInput($pass)) {
+                        $_SESSION['username'] = $data['username'];
+                        $_SESSION['accountID'] = $data['accountID'];
+                        $_SESSION['accountName'] = $data['accountName'];
+                        $_SESSION['classification'] = $data['classification'];
+    
+                        return true;
+                    }
                 }
                 return false;
             }
@@ -65,7 +96,7 @@
                 $pass = $_POST['pass'];
 
                 if (checkIfValid($sqlconnect, $user, $pass) && !empty($user) && !empty($pass)) header('Location: dts.php');
-                else echo "<span class = 'error'>Incorrect username or password.</span>";
+                else echo "<div class = 'error' style='text-align: center'>Incorrect username or password.</div>";
                 die();
             }
         ?>
