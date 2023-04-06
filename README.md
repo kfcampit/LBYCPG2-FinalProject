@@ -26,7 +26,7 @@ Done:
 - Reading from Database
 
 In Progress:
-- Permission-based Editing (I made a file (actStatusEdit) for the editing / updating sa Activity Status. Di lang sya gumana since di maread / Error yung submissionID from another php page. But it works if explicit define yung submissionID. )
+- Permission-based Editing
 - Layout
 - Design
 
@@ -42,12 +42,11 @@ In Progress:
 
 ### **5. Account Management**
 Done:
-- None
+- Reading and Writing to Database (Not Sure if ito ba but the actStatusEdit updates the Activity Status)
 
 In Progress:
 - Layout
 - Design
-- Reading and Writing to Database
 - Account Editing
 - Permission Assignments
 
