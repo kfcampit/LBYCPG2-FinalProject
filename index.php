@@ -15,6 +15,12 @@
 <html>
     <head>
         <title>CSO - APSMS</title>
+        <meta charset = "UTF-8">
+        <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+        <meta name = "viewport" content = "width = device - width, initialize-scale = 1.0">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
         <style>.error {color: #FF0000}</style>
     </head>
     <body>
@@ -25,7 +31,6 @@
                 <tr><td><span class = "error">*</span>Username: </td><td><input type = "text" name = "user" /></td></tr>
                 <tr><td><span class = "error">*</span>Password: </td><td><input type = "password" name = "pass" /></td></tr>
             </table>
-            <br>
             <input type = "submit" name = "b1" value = "Login"/>
         </form>
         <?php
@@ -45,7 +50,6 @@
                 $data = mysqli_fetch_array($searchForUser);
 
                 if ($data['password'] == cleanInput($pass)) {
-                    $_SESSION['password'] = $data['password'];
                     $_SESSION['username'] = $data['username'];
                     $_SESSION['accountID'] = $data['accountID'];
                     $_SESSION['accountName'] = $data['accountName'];
