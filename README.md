@@ -26,7 +26,7 @@ Done:
 - Reading from Database
 
 In Progress:
-- Permission-based Editing
+- Permission-based Editing (I made a file (actStatusEdit) for the editing / updating sa Activity Status. Di lang sya gumana since di maread / Error yung submissionID from another php page. But it works if explicit define yung submissionID. )
 - Layout
 - Design
 
