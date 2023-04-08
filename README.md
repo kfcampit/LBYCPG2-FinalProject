@@ -26,7 +26,7 @@ Done:
 - Reading from Database
 
 In Progress:
-- Permission-based Editing
+- Permission-based Editing (Done wih the editing but not permission-based yet)
 - Layout
 - Design
 
@@ -42,11 +42,12 @@ In Progress:
 
 ### **5. Account Management**
 Done:
-- Reading and Writing to Database (Not Sure if ito ba but the actStatusEdit updates the Activity Status)
+
 
 In Progress:
 - Layout
 - Design
+- Reading and Writing to Database
 - Account Editing
 - Permission Assignments
 
