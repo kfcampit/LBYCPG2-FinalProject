@@ -83,8 +83,21 @@
                     echo "Contact Number: " . $num . " " . "<br>";
                     echo "Email: " . $email . " " . "<br>";
                     echo "File: " . "<a href = $file target = '_blank'> $file </a> " . "<br>";
-                    echo "Processing Stage: " . $processStage . " " . "<br>";
-                    echo "Approval Status: " . $approveStatus . " " . "<br>";
+                    if (strtolower($processStage) == strtolower('For First Checking')){
+                        echo "Processing Stage: " . "<font color = '#FF0000'> $processStage </font>" . " " . "<br>";
+                    } else if (strtolower($processStage) == strtolower('For Second Checking')) {
+                        echo "Processing Stage: " . "<font color = '#FEC20C'> $processStage </font>" . " " . "<br>";
+                    }else if (strtolower($processStage) == strtolower('Checked')) {
+                        echo "Processing Stage: " . "<font color = '#03AC13'> $processStage </font>" . " " . "<br>";
+                    }
+                    if (strtolower($approveStatus) == strtolower('Full Incentive')){echo "Approval Status: " . "<font color = '#6f90f4'> $approveStatus </font>" . " " . "<br>";}
+                    elseif (strtolower($approveStatus) == strtolower('Half Incentive')) {echo "Approval Status: " . "<font color = '#6f90f4'> $approveStatus </font>" . " " . "<br>";}
+                    elseif (strtolower($approveStatus) == strtolower('Early Approved')) {echo "Approval Status: " . "<font color = '#d9ead3'> $approveStatus </font>" . " " . "<br>";}
+                    elseif (strtolower($approveStatus) == strtolower('Late Approved')) {echo "Approval Status: " . "<font color = 'fff2cc'> $approveStatus </font>" . " " . "<br>";}
+                    elseif (strtolower($approveStatus) == strtolower('Pending')) {echo "Approval Status: " . "<font color = '#CBC3E3'> $approveStatus </font>" . " " . "<br>";}
+                    elseif (strtolower($approveStatus) == strtolower('Uncounted Pend')) {echo "Approval Status: " . "<font color = '#ff80ff'> $approveStatus </font>" . " " . "<br>";}
+                    elseif (strtolower($approveStatus) == strtolower('No Status')) {echo "Approval Status: " . "<font color = '#D3D3D3'> $approveStatus </font>" . " " . "<br>";}
+                    elseif (strtolower($approveStatus) == strtolower('Denied')) {echo "Approval Status: " . "<font color = '#E3BAC6'> $approveStatus </font>" . " " . "<br>";}
                 }
                 echo "<a class = 'btn btn-primary' href = 'dts.php'> Return DTS </a> 
                 <a class = 'btn btn-success' href = 'actStatus.php?id=$subID'> Check </a> ";
