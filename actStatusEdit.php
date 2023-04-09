@@ -144,103 +144,103 @@
         <label for = "dropdownPostReq">Nature of Activity: </label>
         <select name="postReq" id="dropdownPostReq">
             <option value=""> --- SELECT OPTION ---</option>
-            <option value="Pre-Acts Requirements
-                            General Attendance Log Sheet
-                            Audited List of Expenses
-                            List of Pictures
-                            Member Feedback
+            <option value="Pre-Acts Requirements,
+                            General Attendance Log Sheet,
+                            Audited List of Expenses,
+                            List of Pictures,
+                            Member Feedback,
                             Activity Report"> Assistance - Synchronous/Consultation/ Tutorials</option>
-            <option value="Pre-Acts Requirements
-                            Audited List of Expenses
-                            Approved Flyer/Poster
+            <option value="Pre-Acts Requirements,
+                            Audited List of Expenses,
+                            Approved Flyer/Poster,
                             Activity Report"> Assistance - Asynchronous</option>
-            <option value="Pre-Acts Requirements
-                            Audited List of Expenses
-                            Approved Flyer/Poster
+            <option value="Pre-Acts Requirements,
+                            Audited List of Expenses,
+                            Approved Flyer/Poster,
                             Activity Report"> Awareness Campaign - Announcements</option>
-            <option value="Pre-Acts Requirements
-                            Audited List of Expenses
-                            List of Participants and Winners
-                            Approved Flyer/Poster
+            <option value="Pre-Acts Requirements,
+                            Audited List of Expenses,
+                            List of Participants and Winners,
+                            Approved Flyer/Poster,
                             Activity Report">Contest - Asynchronous </option>
-            <option value="Pre-Acts Requirements
-                            General Attendance Log Sheet
-                            Audited List of Expenses
-                            List of Pictures
-                            List of Participants and Winners
-                            Member Feedback 
+            <option value="Pre-Acts Requirements,
+                            General Attendance Log Sheet,
+                            Audited List of Expenses,
+                            List of Pictures,
+                            List of Participants and Winners,
+                            Member Feedback, 
                             Activity Report">Contest - (NON) Academic/ Synchronous</option>
-            <option value="Pre-Acts Requirements
-                            Audited List of Expenses
-                            Approved Flyer/Poster
+            <option value="Pre-Acts Requirements,
+                            Audited List of Expenses,
+                            Approved Flyer/Poster,
                             Activity Report">Distribution - Reviewers/ Memebership Materials</option>
-            <option value="Pre-Acts Requirements
-                            General Attendance Log Sheet
-                            Audited List of Expenses
-                            List of Pictures
-                            Consolidated and Summarized Focus Group Discussion Results
+            <option value="Pre-Acts Requirements,
+                            General Attendance Log Sheet,
+                            Audited List of Expenses,
+                            List of Pictures,
+                            Consolidated and Summarized Focus Group Discussion Results,
                             Minutes of the Meeting">Data Gathering - Focus Group Discussion </option>
-            <option value="Pre-Acts Requirements
-                            Audited List of Expenses
-                            Approved Flyer/Poster
-                            Consolidated Survey Results
+            <option value="Pre-Acts Requirements,
+                            Audited List of Expenses,
+                            Approved Flyer/Poster,
+                            Consolidated Survey Results,
                             Activity Report">Data Gathering - Survey</option>
-            <option value="Pre-Acts Requirements
-                            General Attendance Log Sheet
-                            Audited List of Expenses
-                            List of Pictures
-                            Activity Report
+            <option value="Pre-Acts Requirements,
+                            General Attendance Log Sheet,
+                            Audited List of Expenses,
+                            List of Pictures,
+                            Activity Report,
                             AMT Evaluation Results (if applicable)">General Assembly</option>
-            <option value="Pre-Acts Requirements
-                            Signed Broadcast Consent Form/s (if applicable)
-                            General Attendance Log Sheet
-                            Audited List of Expenses
-                            List of Pictures
+            <option value="Pre-Acts Requirements,
+                            Signed Broadcast Consent Form/s (if applicable),
+                            General Attendance Log Sheet,
+                            Audited List of Expenses,
+                            List of Pictures,
                             Activity Report">Online Recognition - Synchronous</option>
-            <option value="Pre-Acts Requirements
-                            Audited List of Expenses
-                            Approved Flyer/Poster
+            <option value="Pre-Acts Requirements,
+                            Audited List of Expenses,
+                            Approved Flyer/Poster,
                             Activity Report">Online Recognition - Asynchronous</option>
-            <option value="Pre-Acts Requirements
-                            Audited List of Expenses
-                            List of Pictures
+            <option value="Pre-Acts Requirements,
+                            Audited List of Expenses,
+                            List of Pictures,
                             Minutes of the Meeting">Meeting</option>
-            <option value="Pre-Acts Requirements
-                            General Attendance Log Sheet
-                            Audited List of Expenses
-                            List of Pictures
+            <option value="Pre-Acts Requirements,
+                            General Attendance Log Sheet,
+                            Audited List of Expenses,
+                            List of Pictures,
                             Activity Report">Recreation - Film Showing/ Hangout/ Game Nights</option>
-            <option value="Pre-Acts Requirements
-                            Audited List of Expenses
-                            List of Accepted Applicants
+            <option value="Pre-Acts Requirements,
+                            Audited List of Expenses,
+                            List of Accepted Applicants,
                             Activity Report">Recruitment / Audition / Election - Asynchronous / With Interviewers Only</option>
-            <option value="Pre-Acts Requirements
-                            General Attendance Log Sheet
-                            Audited List of Expenses
-                            List of Pictures
-                            List of Accepted Applicants
+            <option value="Pre-Acts Requirements,
+                            General Attendance Log Sheet,
+                            Audited List of Expenses,
+                            List of Pictures,
+                            List of Accepted Applicants,
                             Activity Report">Recruitment / Audition / Election - With Meeting De Avance</option>
-            <option value="Pre-Acts Requirements
-                            Signed Broadcast Consent Form/s (if applicable)
-                            General Attendance Log Sheet
-                            Audited List of Expenses
-                            List of Pictures
-                            Activity Report
+            <option value="Pre-Acts Requirements,
+                            Signed Broadcast Consent Form/s (if applicable),
+                            General Attendance Log Sheet,
+                            Audited List of Expenses,
+                            List of Pictures,
+                            Activity Report,
                             AMT Evaluation Results (if applicable)">Seminar / Workshop - Talk/ Forum/ Orientation/ Convocation</option>
-            <option value="Pre-Acts Requirements
-                            General Attendance Log Sheet
-                            Audited List of Expenses
-                            List of Pictures
+            <option value="Pre-Acts Requirements,
+                            General Attendance Log Sheet,
+                            Audited List of Expenses,
+                            List of Pictures,
                             Activity Report">Training Program / Succession Program / Simulation - Synchronous</option>
-            <option value="Pre-Acts Requirements
-                            Audited List of Expenses
-                            Approved Flyer/Poster
+            <option value="Pre-Acts Requirements,
+                            Audited List of Expenses,
+                            Approved Flyer/Poster,
                             Activity Report">Training Program / Succession Program / Simulation - Asynchronous</option>
-            <option value="Pre-Acts Requirements
-                            General Attendance Log Sheet 
-                            Audited List of Expenses
-                            List of Pictures
-                            Member Feedback
+            <option value="Pre-Acts Requirements,
+                            General Attendance Log Sheet,
+                            Audited List of Expenses,
+                            List of Pictures,
+                            Member Feedback,
                             Activity Report">Series Activity</option>
 
         </select>
