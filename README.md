@@ -36,10 +36,11 @@ Done:
 - Forms
 - Writing to Database
 - Input Verification
-
-In Progress:
 - Layout
 - Design
+
+In Progress:
+
 
 ### **5. Account Management**
 Done:
