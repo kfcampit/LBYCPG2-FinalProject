@@ -24,11 +24,12 @@ In Progress
 ### **3. Document Viewing and Editing**
 Done:
 - Reading from Database
+- Layout
+- Design
 
 In Progress:
 - Permission-based Editing (Done wih the editing but not permission-based yet)
-- Layout
-- Design
+
 
 ### **4. Activity Recieving and Tracking System**
 Done:
