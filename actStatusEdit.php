@@ -10,26 +10,25 @@
                 height: 550px;
                 overflow: scroll;
             }
-            </style>
-        <style>
             .error {color: #FF0000;}
-        </style>
-        <style>
-             label {
+            .label {
                 display: inline-block;
                 width: 110px;
                 color: #000000;
             }
-            input {
+            .input {
                 padding: 5px 10px;
             }
-            select {
+            .select {
                 padding: 5px 10px;
             }
         </style>
     </head>
-<body style = "margin: 50px;">
-    <div class = "container"> 
+<body style = "margin: 50px; background-color: #F6F6E9">
+    <div class="container" >
+        <h1 style="text-align: center; padding-bottom: 16px; color: #013700">Document Checking</h1>
+    </div>
+    <div class = "container" style='background-color: #F5F5F0'> 
     <div class = "scroll"> 
     <table class = "table">
         <?php
@@ -98,10 +97,8 @@
     }
     ?>
 
-    <h2>Activity Details Form </h2>
-    <p><span class="error">* required field</span></p>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <label for = "dropdownProcess"> Processing Stage: </label> 
+        <label for = "dropdownProcess" style = "color: #183C1B; width : 150px; border-radius: 10px"> Processing Stage: </label> 
         <select name="process" id="dropdownProcess">
             <option value=""> --- SELECT OPTION ---</option>
             <option value="For First Checking">For First Checking</option>
@@ -111,7 +108,7 @@
         <span class="error">* <?php echo $processErr;?></span>
 
         <br><br>
-        <label for = "dropdownApproval"> Approval Status: </label> 
+        <label for = "dropdownApproval" style = "color: #183C1B; width : 150px; border-radius: 10px"> Approval Status: </label> 
         <select name="approval" id="dropdownApproval">
             <option value=""> --- SELECT OPTION ---</option>
             <option value="Full Incentive">Full Incentive</option>
@@ -126,22 +123,22 @@
         <span class="error">* <?php echo $approvalErr;?></span>
         
         <br><br>
-        <label for = "assocCheck"> Associate Checker: </label> <input type="text" name="assocCheck">
+        <label for = "assocCheck" style = "color: #183C1B; width : 150px; border-radius: 10px"> Associate Checker: </label> <input type="text" name="assocCheck">
         <span class="error">* <?php echo $assocCheckErr;?></span>
         <br><br>
-        <label for = "finalCheck"> Final Checker: </label><input type="text" name="finalCheck">
+        <label for = "finalCheck" style = "color: #183C1B; width : 150px; border-radius: 10px"> Final Checker: </label><input type="text" name="finalCheck">
         <span class="error">* <?php echo $finalCheckErr;?></span>
 
         <br><br>
-        <label for = "assocRemark"> Associate Remark: </label><textarea rows = '5' cols = '30' name = 'assocRemark' placeholder = 'Enter Associate Remark Here'></textarea>
+        <label for = "assocRemark" style = "color: #183C1B; width : 150px; border-radius: 10px"> Associate Remark: </label><textarea rows = '5' cols = '30' name = 'assocRemark' placeholder = 'Enter Associate Remark Here'></textarea>
         <span class="error">* <?php echo $assocRemarkErr;?></span>
 
         <br><br>
-        <label for = "finalRemark"> Final Remark: </label><textarea rows = '5' cols = '30' name = 'finalRemark' placeholder = 'Enter Final Remark Here'></textarea>
+        <label for = "finalRemark" style = "color: #183C1B; width : 150px; border-radius: 10px"> Final Remark: </label><textarea rows = '5' cols = '30' name = 'finalRemark' placeholder = 'Enter Final Remark Here'></textarea>
         <span class="error">* <?php echo $finalRemarkErr;?></span>
 
         <br><br>
-        <label for = "dropdownPostReq">Nature of Activity: </label>
+        <label for = "dropdownPostReq" style = "color: #183C1B; width : 150px; border-radius: 10px">Nature of Activity: </label>
         <select name="postReq" id="dropdownPostReq">
             <option value=""> --- SELECT OPTION ---</option>
             <option value="Pre-Acts Requirements,
@@ -247,11 +244,11 @@
         <span class="error">* <?php echo $postReqErr;?></span>
 
         <br><br>
-        <label for = "deadlinePR"> Post-Activity Deadline: </label><input type="date" name="deadlinePR" >
+        <label for = "deadlinePR" style = "color: #183C1B; width : 150px; border-radius: 10px"> Post-Activity Deadline: </label><input type="date" name="deadlinePR" >
         <span class="error">* <?php echo $deadlinePRErr;?></span>
 
         <br><br>
-        <label for = "eval_Status"> For Evaluation: </label> 
+        <label for = "eval_Status" style = "color: #183C1B; width : 150px; border-radius: 10px"> For Evaluation: </label> 
         Yes<input type="radio" name="eval_Status" value = "Yes">
         No<input type="radio" name="eval_Status" value = "No">       
         <span class="error">* <?php echo $eval_StatusErr;?></span>
