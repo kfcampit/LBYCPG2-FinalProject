@@ -28,11 +28,6 @@
 
             <div class="container-sm">
                 <form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method = "post">
-                    <!-- <span class = "error">*Required Field</span>
-                    <table>
-                        <tr><td><span class = "error">*</span>Username: </td><td><input type = "text" name = "user" /></td></tr>
-                        <tr><td><span class = "error">*</span>Password: </td><td><input type = "password" name = "pass" /></td></tr>
-                    </table> -->
                     <div class="row justify-content-md-center" style = "padding-bottom: 8px">
                         <div class="col-1">
                             <input type="text" readonly class="form-control-plaintext" value="Username:">
@@ -40,6 +35,15 @@
                         <div class="col-3">
                             <label for="user" class="visually-hidden">user</label>
                             <input type="text" class="form-control" name="user">
+                        </div>
+                    </div>
+                    <div class="row justify-content-md-center" style = "padding-bottom: 16px">
+                        <div class="col-1">
+                            <input type="text" readonly class="form-control-plaintext" value="Password:">
+                        </div>
+                        <div class="col-3">
+                            <label for="pass" class="visually-hidden">pass</label>
+                            <input type="password" class="form-control" name="pass">
                         </div>
                     </div>
                     <div class="row justify-content-md-center" style = "padding-bottom: 16px">
@@ -82,7 +86,7 @@
                         $_SESSION['accountID'] = $data['accountID'];
                         $_SESSION['accountName'] = $data['accountName'];
                         $_SESSION['classification'] = $data['classification'];
-                        $_SESSION['organization'] = $data['organization'];
+    
                         return true;
                     }
                 }

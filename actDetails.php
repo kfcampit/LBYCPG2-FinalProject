@@ -8,8 +8,6 @@
     if (!$selectDB){
          die("Failed to connect to the database: ");
     }
-
-    session_start();
 ?>
 <html>
 <head>
@@ -22,6 +20,7 @@
             .scroll{
                 height: 700px;
                 overflow: scroll;
+                overflow-x: hidden;
             }
 
             .error {color: #FF0000;}
@@ -51,11 +50,12 @@
             }
             </script>
     </head>
-<body style = "margin: 50px; background-color: #F6F6E9">
-    <div class="container" >
-        <h1 style="text-align: center; padding-bottom: 16px; color: #013700">Activity Receiving and Tracking System </h1>
+<body>
+    <?php include("_navbar.php"); ?>
+    <div class="container">
+        <h1 style="text-align: center; padding-bottom: 16px;">Activity Receiving and Tracking System </h1>
     </div> 
-    <div class = "container" style='background-color: #F5F5F0'> 
+    <div class = "container"  style = "padding-right: 20%; padding-left: 20%"> 
     <div class = "scroll"> 
     <table class = "table">
         <?php
@@ -186,7 +186,10 @@
             '$_POST[actDuration]', '$_POST[eval_Status]', '$_POST[start_Date]', '$_POST[end_Date]', '$_POST[time]', '$_POST[venue]', '$_POST[actNature]', '$_POST[actType]', '$_POST[submission]', '$_POST[org_Pos]',
             '$_POST[contact_Num]', '$_POST[email]', '$_POST[file]')";
             mysqli_query($sqlconnect,$addrecords);
-            echo "Submission Submitted Successfully!";
+
+            $addStatus = "INSERT INTO ActStatus(ProcessingStage) values(NULL)";
+            mysqli_query($sqlconnect,$addStatus);
+            header("Location: dts.php");
         }
         }
 
@@ -202,68 +205,68 @@
     ?>
 
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <label for = "term" style = "color: #183C1B; width : 150px"> Term: </label> 
-        <select name="term" id="dropdown">
+        <label for = "term" style = "padding-right: 8px" class="form-label"> Term: </label>
+        <span class="error">* <?php echo $termErr;?></span> 
+        <select name="term" id="dropdown" class="form-select w-50">
             <option value="Term 1">Term 1</option>
             <option value="Term 2">Term 2</option>
             <option value="Term 3">Term 3</option>
         </select>
-        <span class="error">* <?php echo $termErr;?></span>
-        
-        <br><br>
-        <label for = "org" style = "color: #183C1B; width : 150px; border-radius: 10px"> Organization: </label> <input type="text" name="org">
+        <br>
+        <label for = "org" style = "padding-right: 8px" class="form-label"> Organization: </label>
         <span class="error">* <?php echo $orgErr;?></span>
-        <br><br>
-        <label for = "arn" style = "color: #183C1B; width : 150px; border-radius: 10px"> Activity Reference Number: </label><input type="text" name="arn">
+        <input type="text" name="org" class="form-control w-50"  readonly value = "<?php echo $_SESSION['organization']?>">
+        <br>
+        <label for = "arn" style = "padding-right: 8px" class="form-label"> Activity Reference Number: </label>
         <span class="error">* <?php echo $arnErr;?></span>
-
-        <br><br>
-        <label for = "actTitle" style = "color: #183C1B; width : 150px; border-radius: 10px"> Activity Title: </label><input type="text" name="actTitle">
+        <input type="text" name="arn" class="form-control w-50">
+        <br>
+        <label for = "actTitle" style = "padding-right: 8px" class="form-label"> Activity Title: </label>
         <span class="error">* <?php echo $actTitleErr;?></span>
-
-        <br><br>
-        <label for = "dropdown" style = "color: #183C1B; width : 150px; border-radius: 10px">Type of Submission: </label>
-        <select name="submissionType" id="dropdown">
+        <input type="text" name="actTitle" class="form-control w-50">
+        <br>
+        <label for = "dropdown" style = "padding-right: 8px" class="form-label">Type of Submission: </label>
+        <span class="error">* <?php echo $submissionTypeErr;?></span>
+        <select name="submissionType" id="dropdown" class="form-select w-50">
             <option value="Initial Submission">Initial Submission</option>
             <option value="Pended Submission">Pended Submission</option>
         </select>
-        <span class="error">* <?php echo $submissionTypeErr;?></span>
-
-        <br><br>
-        <label for = "dropdown" style = "color: #183C1B; width : 150px; border-radius: 10px">Activity Duration: </label>
-        <select name="actDuration" id="dropdown">
+        <br>
+        <label for = "dropdown" style = "padding-right: 8px" class="form-label">Activity Duration: </label>
+        <span class="error">* <?php echo $actDurationErr;?></span>
+        <select name="actDuration" id="dropdown" class="form-select w-50">
             <option value="One Day">One Day</option>
             <option value="Multiple Days">Multiple Days</option>
             <option value="Termlong">Termlong</option>
         </select>
-        <span class="error">* <?php echo $actDurationErr;?></span>
-
-        <br><br>
-        <label for = "eval_Status" style = "color: #183C1B; width : 150px; border-radius: 10px"> For Evaluation: </label> 
-        Yes<input type="radio" name="eval_Status" value = "Yes">
-        No<input type="radio" name="eval_Status" value = "No">       
+        <br>
+        <label for = "eval_Status" style = "padding-right: 8px" class="form-label"> For Evaluation: </label>
         <span class="error">* <?php echo $eval_StatusErr;?></span>
-
-        <br><br>
-        <label for = "start_Date" style = "color: #183C1B; width : 150px; border-radius: 10px"> Starting Date: </label><input type="date" name="start_Date" >
+        <select name="eval_Status" id="dropdown" class="form-select w-50">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select> 
+        <br>
+        <label for = "start_Date" style = "padding-right: 8px" class="form-label"> Starting Date: </label>
         <span class="error">* <?php echo $start_DateErr;?></span>
-
-        <br><br>
-        <label for = "end_Date" style = "color: #183C1B; width : 150px; border-radius: 10px"> Ending Date: </label><input type="date" name="end_Date" >
+        <input type="date" name="start_Date"  class="form-control w-50">
+        <br>
+        <label for = "end_Date" style = "padding-right: 8px" class="form-label"> Ending Date: </label>
         <span class="error">* <?php echo $end_DateErr;?></span>
-
-        <br><br>
-        <label for = "time" style = "color: #183C1B; width : 150px; border-radius: 10px"> Time: </label><input type="time" name="time" >
+        <input type="date" name="end_Date"  class="form-control w-50">
+        <br>
+        <label for = "time" style = "padding-right: 8px" class="form-label"> Time: </label>
         <span class="error">* <?php echo $timeErr;?></span>
-
-        <br><br>
-        <label for = "venue" style = "color: #183C1B; width : 150px; border-radius: 10px"> Venue: </label><input type="text" name="venue">
+        <input type="time" name="time"  class="form-control w-50">
+        <br>
+        <label for = "venue" style = "padding-right: 8px" class="form-label"> Venue: </label>
         <span class="error">* <?php echo $venueErr;?></span>
-
-        <br><br>
-        <label for = "dropdown" style = "color: #183C1B; width : 150px; border-radius: 10px">Nature of Activity: </label>
-        <select name="actNature" id="dropdown">
-            <option value=""> --- SELECT OPTION ---</option>
+        <input type="text" name="venue"  class="form-control w-50">
+        <br>
+        <label for = "dropdown" style = "padding-right: 8px" class="form-label">Nature of Activity: </label>
+        <span class="error">* <?php echo $actNatureErr;?></span>
+        <select name="actNature" id="dropdown"  class="form-select w-50">
+            <option value=""> </option>
             <option value="Academic">Academic</option>
             <option value="Special Interest">Special Interest</option>
             <option value="Departmental Initiative">Departmental Initiative</option>
@@ -274,12 +277,11 @@
             <option value="Lasallian Formation/ Spiritual Growth">Lasallian Formation/ Spiritual Growth</option>
             <option value="Outreach">Outreach</option>
         </select>
-        <span class="error">* <?php echo $actNatureErr;?></span>
-
-        <br><br>
-        <label for = "dropdownType" style = "color: #183C1B; width : 150px; border-radius: 10px">Type of Activity: </label>
-        <select name="actType" id="dropdownType" onchange = "ShowHideDiv()">
-            <option value=""> --- SELECT OPTION ---</option>
+        <br>
+        <label for = "dropdownType" style = "padding-right: 8px" class="form-label">Type of Activity: </label>
+        <span class="error">* <?php echo $actTypeErr;?></span>
+        <select name="actType" id="dropdownType" onchange = "ShowHideDiv()" class="form-select w-50">
+            <option value=""> </option>
             <option value="Assistance">Assistance</option>
             <option value="Awareness Campaign">Awareness Campaig</option>
             <option value="Contest">Contest</option>
@@ -293,35 +295,35 @@
             <option value="Spiritual Activity">Spiritual Activity</option>
             <option value="Others">Others</option>
         </select>
-        <span class="error">* <?php echo $actTypeErr;?></span>
+        <br>
         <div class="control-group" id="otherInfo" style="display: none">
-            <label for = "otherInfo" class="control-label" style = "display: inline-block; border-radius: 10px; color: #183C1B; width : 150px" >Enter Other Type: </label>
-            <input type="text" placeholder="Enter Other Type" name="OtheractType" class="input-xlarge">
+            <label for = "otherInfo" class="control-label" style = "display: inline-block; border-radius: 10px; width : 150px" >Enter Other Type: </label>
+            <input type="text" placeholder="Enter Other Type" name="OtheractType" class="input-xlarge"  class="form-control w-50">
         </div>
-
-        <br><br>
-        <label for = "submission" style = "color: #183C1B; width : 150px; border-radius: 10px"> Submission By: </label><input type="text" name="submission">
+        <br>
+        <label for = "submission" style = "padding-right: 8px" class="form-label"> Submission By: </label>
         <span class="error">* <?php echo $submissionErr;?></span>
-
-        <br><br>
-        <label for = "org_pos" style = "color: #183C1B; width : 150px; border-radius: 10px"> Position in Organization: </label><input type="text" name="org_Pos">
+        <input type="text" name="submission"  class="form-control w-50" readonly value = "<?php echo $_SESSION['accountName']?>">
+        <br>
+        <label for = "org_pos" style = "padding-right: 8px" class="form-label"> Position in Organization: </label>
         <span class="error">* <?php echo $org_PosErr;?></span>
-
-        <br><br>
-        <label for = "contact_Num" style = "color: #183C1B; width : 150px; border-radius: 10px"> Contact Number: </label><input type="text" name="contact_Num">
+        <input type="text" name="org_Pos"  class="form-control w-50">
+        <br>
+        <label for = "contact_Num" style = "padding-right: 8px" class="form-label"> Contact Number: </label>
         <span class="error">* <?php echo $contact_NumErr;?></span>
-
-        <br><br>
-        <label for = "contact_Num" style = "color: #183C1B; width : 150px; border-radius: 10px"> Email Address: </label><input type="text" name="email">
+        <input type="text" name="contact_Num"  class="form-control w-50">
+        <br>
+        <label for = "contact_Num" style = "padding-right: 8px" class="form-label"> Email Address: </label>
         <span class="error">* <?php echo $emailErr;?></span>
-
-        <br><br>
-        <label for = "file" style = "color: #183C1B; width : 150px; border-radius: 10px"> File: </label><input type="text" name="file">
+        <input type="text" name="email"  class="form-control w-50">
+        <br>
+        <label for = "file" style = "padding-right: 8px" class="form-label"> File: </label>
         <span class="error">* <?php echo $fileErr;?></span>
-
-        <br><br>
-        <input type="submit" value="Submit" />
-        <input type="button" onclick="window.location.href='dts.php';" value="DTS" />
+        <input type="text" name="file"  class="form-control w-50">
+        <br>
+        <input type="submit" value="Submit" class="btn btn-success" />
+        <span style="padding-right:8px"></span>
+        <input type="button" onclick="window.location.href='dts.php';" value="Return to DTS" class="btn btn-primary"/>
     </form>
     </table>
     </body>

@@ -5,9 +5,10 @@
 Done:
 - Layout
 - Functionality
+- Design
 
 In Progress:
-- Design
+
 
 ### **2. Document Tracking System**
 Done:
@@ -16,19 +17,21 @@ Done:
 - Layout
 - Reading from Database
 - Submission Statuses
-
-In Progress
 - Permission-based Viewing
 - Design
+
+
+In Progress
 
 ### **3. Document Viewing and Editing**
 Done:
 - Reading from Database
 - Layout
 - Design
+- Permission-based Editing 
 
 In Progress:
-- Permission-based Editing (Done wih the editing but not permission-based yet)
+
 
 
 ### **4. Activity Recieving and Tracking System**
@@ -44,18 +47,19 @@ In Progress:
 
 ### **5. Account Management**
 Done:
-
-
-In Progress:
 - Layout
 - Design
 - Reading and Writing to Database
 - Account Editing
 - Permission Assignments
 
+In Progress:
+
+
 ### **6. Others**
 Done:
 - Navigation Bar
+- Permission-based Security
 
 In Progress:
-- Permission-based Security
+

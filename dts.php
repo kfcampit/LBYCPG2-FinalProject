@@ -8,8 +8,6 @@
     if (!$selectDB){
          die("Failed to connect to the database: ");
     }
-
-    session_start();
 ?>
 <html>
     <head>
@@ -197,8 +195,14 @@
             <?php
 
                 function allContents($connection) {
-                    $result_out = mysqli_query($connection, "SELECT Timestamp, Term, Organization, ActivityTitle, TypeOfSubmission, ActivityDuration, StartingDate, NatureOfActivity, TypeOfActivity, 
-                    SubmissionID, ProcessingStage FROM actdetail LEFT JOIN actstatus ON actdetail.SubmissionID = actstatus.SubID ORDER BY Timestamp");
+                    if ($_SESSION['organization'] != 'CSO') {
+                        $result_out = mysqli_query($connection, "SELECT Timestamp, Term, Organization, ActivityTitle, TypeOfSubmission, ActivityDuration, StartingDate, NatureOfActivity, TypeOfActivity, 
+                        SubmissionID, ProcessingStage FROM actdetail LEFT JOIN actstatus ON actdetail.SubmissionID = actstatus.SubID WHERE Organization = '". $_SESSION['organization'] ."' ORDER BY Timestamp");
+                    } else {
+                        $result_out = mysqli_query($connection, "SELECT Timestamp, Term, Organization, ActivityTitle, TypeOfSubmission, ActivityDuration, StartingDate, NatureOfActivity, TypeOfActivity, 
+                        SubmissionID, ProcessingStage FROM actdetail LEFT JOIN actstatus ON actdetail.SubmissionID = actstatus.SubID ORDER BY Timestamp");
+                    }
+                    
                     if (!$result_out) die("Failed to connect: ");
                     else return $result_out;
                 }
@@ -243,12 +247,21 @@
                 }
 
                 if(isset($_GET['searchButton'])) {
+
+                    $orgsearch = " ";
+
+                    if ($_SESSION['organization'] != 'CSO') {
+                        $orgsearch = " WHERE Organization = '". $_SESSION['organization'] ."' ";
+                    }
+
+
                     $basicSearch = cleanInput($_GET['search']);
                     if (empty($basicSearch)) displayTable(allContents($sqlconnect));
                     else {
                         $result_out = mysqli_query($sqlconnect,
-                        "SELECT Timestamp, Term, Organization, ActivityTitle, TypeOfSubmission, ActivityDuration, StartingDate, NatureOfActivity, TypeOfActivity, SubmissionID
-                        FROM actdetail
+                        "SELECT Timestamp, Term, Organization, ActivityTitle, TypeOfSubmission, ActivityDuration, StartingDate, NatureOfActivity, TypeOfActivity, SubmissionID, ProcessingStage
+                        FROM (SELECT Timestamp, Term, Organization, ActivityTitle, TypeOfSubmission, ActivityDuration, StartingDate, NatureOfActivity, TypeOfActivity, 
+                    SubmissionID, ProcessingStage FROM actdetail LEFT JOIN actstatus ON actdetail.SubmissionID = actstatus.SubID". $orgsearch ."ORDER BY Timestamp) joined
                         WHERE Term LIKE '%". $basicSearch ."%' OR
                         Organization LIKE '%". $basicSearch ."%' OR
                         ActivityTitle LIKE '%". $basicSearch ."%' OR
@@ -272,8 +285,8 @@
                     if (empty($selectTerm) && empty($searchOrg) && empty($searchTitle) && empty($selectTypeSub) && empty($selectDuration) && empty($searchDate) && empty($selectNature) && empty($selectTypeAct)) {
                         displayTable(allContents($sqlconnect));
                     } else {
-                        $query = "SELECT Timestamp, Term, Organization, ActivityTitle, TypeOfSubmission, ActivityDuration, StartingDate, NatureOfActivity, TypeOfActivity, SubmissionID
-                        FROM actdetail WHERE ";
+                        $query = "SELECT Timestamp, Term, Organization, ActivityTitle, TypeOfSubmission, ActivityDuration, StartingDate, NatureOfActivity, TypeOfActivity, SubmissionID, ProcessingStage
+                        FROM (SELECT * FROM actdetail LEFT JOIN actstatus ON actdetail.SubmissionID = actstatus.SubID". $orgsearch .") joined WHERE ";
 
                         if(!empty($selectTerm)) $query = $query . "Term LIKE '%". $selectTerm ."%' OR ";
                         if(!empty($searchOrg)) $query = $query . "Organization LIKE '%". $searchOrg ."%' OR ";
